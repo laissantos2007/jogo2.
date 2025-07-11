@@ -1,0 +1,81 @@
+[17:46, 11/07/2025] Laís: <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Jokenpô - Pedra Papel Tesoura</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding: 40px;
+      background-color: #f0f0f0;
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #resultado {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+    #pontos {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Jokenpô 🤜🤚✌️</h1>
+
+  <p>Escolha uma opção:</p>
+  <button onclick="jogar('pedra')">🪨 Pedra</button>
+  <button onclick="jogar('papel')">📄 Papel</button>
+  <button onclick="jogar('tesoura')">✂️ Tesoura</button>
+
+  <div id="resultado"></div>
+  <div id="pontos">Seu placar: 0</div>
+
+  <script>
+    let pontuacao = 0;
+
+    function jogar(jogador) {
+      const opcoes = ['pedra', 'papel', 'tesoura'];
+      const maquina = opcoes[Math.floor(Math.random() * 3)];
+
+      let resultado = "";
+
+      if (jogador === maquina) {
+        resultado = Empate! Ambos escolheram ${jogador}.;
+      } else if (
+        (jogador === "pedra" && maquina === "tesoura") ||
+        (jogador === "papel" && maquina === "pedra") ||
+        (jogador === "tesoura" && maquina === "papel")
+      ) {
+        pontuacao++;
+        resultado = Você escolheu ${jogador} e a máquina ${maquina}. Você venceu! 🎉;
+      } else {
+        resultado = Você escolheu ${jogador} e a máquina ${maquina}. Você perdeu! 😢 Fim de jogo.;
+        document.getElementById("resultado").innerHTML = resultado;
+        document.getElementById("pontos").innerText = Placar final: ${pontuacao};
+        desativarBotoes();
+        return;
+      }
+
+      document.getElementById("resultado").innerHTML = resultado;
+      document.getElementById("pontos").innerText = Seu placar: ${pontuacao};
+    }
+
+    function desativarBotoes() {
+      const botoes = document.querySelectorAll("button");
+      botoes.forEach(botao => botao.disabled = true);
+    }
+  </script>
+
+</body>
+</html>
+
+[17:35, 11/07/2025] Laís: 
